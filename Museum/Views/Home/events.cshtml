@@ -1,0 +1,63 @@
+﻿
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- start banner Area -->
+<section class="banner-area relative" id="home">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    Upcoming Events
+                </h1>
+                <p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="event.html"> Events</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+<!-- Start upcoming-event Area -->
+<section class="upcoming-event-area section-gap" id="events">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-60 col-lg-10">
+                <div class="title text-center">
+                    <h1 class="mb-10">Checkout our Upcoming Events</h1>
+                    <p>Who are in extremely love with eco friendly system.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+
+            @{
+                foreach (var o in ViewBag.Events)
+                {
+            <div id="boxOfEvent" style="  font: 1.6em Arial, sans-serif; text-shadow: black 2px 0 4px; color:white;border:1px solid; border-radius:10px; padding:10px 10px 10px 10px; width:500px; height:280px; background:url(@Url.Action("GetImage", "Admin",
+             new { photoId=o.EventId })); background-repeat:no-repeat;  background-size: 100%;">
+
+                <div>
+                    <strong>@o.NameOfEvent</strong>
+
+                </div>
+                <div id="Description"><p><strong>Описание: </strong> @o.Description</p></div>
+                <div id="Price"><p><strong>Цена: </strong>@o.CostOfTicket р.</p></div>
+
+                <br />
+                <br />
+                <br />
+
+                @Html.ActionLink("Купить билеты", "Purchase", new { Id = o.EventId }, new { @class = "btn btn-success" })
+
+            </div>
+                }
+            }
+        </div>
+</section>
+<!-- End upcoming-event Area -->
+<hr />
+

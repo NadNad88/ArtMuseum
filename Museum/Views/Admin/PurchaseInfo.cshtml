@@ -1,0 +1,60 @@
+﻿<section class="banner-area relative" id="home">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    Купить билеты
+                </h1>
+                <p class="text-white link-nav"><a href="index.html">Главная </a>  <span class="lnr lnr-arrow-right"></span>  <a href="ticket.html"> Билеты</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="upcoming-exibition-area section-gap">
+    <div class="container">
+        <h2>Информация о проданных билетах</h2>
+
+        <div class="row">
+            <div class="content">
+
+                @{
+                    int profit = 0;
+                }
+                
+                            <table class="table table-hover table-condensed">
+
+                                <tr>
+                                    <td><p>Дата покупки</p></td>
+                                    <td><p>Количество купленных билетов</p></td>
+                                    <td><p>Потрачено</p></td>
+
+
+                                </tr>
+
+                                @foreach (var b in ViewBag.PurchaseOfTickets)
+                                {
+                                    profit += b.Cost;
+                                <tr>
+                                    <td><p>@b.DateOfPurchase</p></td>
+                                    <td><p>@b.Count</p></td>
+                                    <td><p>@b.Cost</p></td>
+
+
+                                </tr>
+                                }
+
+
+                            </table>
+                      
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+<p style="margin-left:1400px; font-size:24px;" id="profit">Прибыль: @profit р.</p>
+
+<hr />
+
